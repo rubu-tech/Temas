@@ -73,7 +73,7 @@ class MJPEGStream(Image):
 class VRGyroApp(App):
     def build(self):
         # PUT HERE YOUR IP ADDRESS
-        self.ip = "192.168.0.4"
+        self.ip = '192.168.0.4'
         self.winkel = [0, 0, 0]       # Stores rotation angles (x, y, z)
         self.dt = 0.033               # Time step (~30 updates per second)
         self.control = None
@@ -94,7 +94,7 @@ class VRGyroApp(App):
 
         # Create horizontal layout for side-by-side images (VR-like effect)
         layout = BoxLayout(orientation='horizontal')
-        stream_url = 'http://192.168.0.4:8081/stream.mjpg'
+        stream_url = 'http://'+self.ip+':8081/stream.mjpg'
         mjpeg = MJPEGStream(stream_url)
 
         # Create two image views for left and right eye
@@ -123,7 +123,7 @@ class VRGyroApp(App):
     def init_connection(self, dt):
         # Try to connect to the remote robot system
         try:
-            temas.Connect(ip_address=)  # NOTE: Missing actual IP assignment!
+            temas.Connect(ip_address=self.ip)  # NOTE: Missing actual IP assignment!
             self.control = temas.Control()
             self.control.move_pos(0, 0)  # Move to neutral position
             self.initialisiert = True
