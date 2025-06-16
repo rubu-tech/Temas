@@ -123,7 +123,7 @@ class VRGyroApp(App):
     def init_connection(self, dt):
         # Try to connect to the remote robot system
         try:
-            temas.Connect(ip_address=self.ip)  # NOTE: Missing actual IP assignment!
+            temas.Connect(ip_address=self.ip)
             self.control = temas.Control()
             self.control.move_pos(0, 0)  # Move to neutral position
             self.initialisiert = True
